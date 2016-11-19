@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <script src="translate.js"></script>
+        <script>
+            function train(){
+                var input = document.getElementById("input").value;
+                var output = document.getElementById("output").value;
+                
+                translate.train(input, output);
+
+                update_rules();
+            }
+            
+            function update_rules(){
+                
+                var rules = "";
+                
+                for (var i = 0; i < translate.rules.length; i++) {
+                    var rule = translate.rules[i];
+                    
+                    rules += ('<li>'+ rule.input + ' - ' + rule.output +'</li>');
+                }
+                
+                document.getElementById('rules').innerHTML = rules;    
+                
+            }
+        
+        </script>
+    </head>
+    <body>
+        <div>
+            <h3>Train</h3>
+            <textarea cols=100 rows=20 id="input" ></textarea>
+            <textarea cols=100 rows=20 id="output" ></textarea>
+            <button onclick="train();" >Train</butotn>
+        </div>
+        <div>
+            <h3>Rules</h3>
+            <ul id="rules">
+                <li>No Rules</li>
+            </ul>
+        </div>
+            
+    </body>
+</html>
+    
+    
+    
